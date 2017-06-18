@@ -1,0 +1,67 @@
+<%= form_for @host do |f| %>
+  <% if @host.errors.any? %>
+    <div class="alert alert-danger">
+      <a href="#" class="close" data-dismiss="alert">&#215;</a>      
+      <ul>
+        <% @host.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <%= error_messages_for :check %>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<!--   <% if @message %>
+    <li><%= msg %></li>
+  <% end %> -->
+
+  <div class="col-lg-12">
+        <div class="panel with-nav-tabs panel-default">
+            <div class="panel-heading">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tab1default" data-toggle="tab">Information</a></li>
+                        <!-- <li><a href="#tab2default" data-toggle="tab">Login</a></li> -->
+                    </ul>
+            </div>
+            <div class="panel-body">
+                <div class="tab-content">
+                    <div class="tab-pane fade in active" id="tab1default">
+                      <div class="control-group form-group">
+                        <div class="input-group col-xs-4">
+                          <span class="input-group-addon"><i class="fa fa-info-circle"></i></span>
+                          <%= f.text_field :name, :maxlength=>32, class: "form-control", required: true, placeholder: "Name of the Host" %>
+                        </div>
+                      </div>
+                      <div class="control-group form-group">
+                        <div class="input-group col-xs-4">
+                          <span class="input-group-addon"><i class="fa fa-info-circle"></i></span>
+                          <%= f.text_field :address, :maxlength=>60, class: "form-control", required: true, placeholder: "Address" %>
+                        </div>
+                      </div>                      
+                      <div class="control-group form-group">
+                        <div class="input-group col-xs-4">
+                          <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                          <%= f.text_field :username,  :maxlength=>20, class: "form-control", required: true, placeholder: "Username" %>
+                        </div>
+                      </div>                                   
+                      <div class="control-group form-group">
+                        <div class="input-group col-xs-4">
+                          <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                          <%= f.password_field :password, class: "form-control", required: true, placeholder: "Password" %>
+                        </div>
+                      </div>  
+                    </div>
+
+                    <!-- <div class="tab-pane fade" id="tab2default">Default 2</div> -->
+                    <div class=clearfix">
+                    <hr>
+                      <div class="actions">
+                        <a href="<%= hosts_path %>" class="btn btn-danger"><i class='fa fa-arrow-circle-left'></i> Back</a>
+                        <%= f.submit "Send", class: "btn btn-primary pull-right" %>
+                      </div>                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>   
+<% end %>

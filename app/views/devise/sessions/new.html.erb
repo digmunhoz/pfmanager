@@ -1,0 +1,38 @@
+<div class="panel-body">
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <fieldset>
+          <div class="form-group">
+              <%= f.text_field :username, autofocus: true, placeholder: "Username", class: "form-control" %>
+          </div>
+          <div class="form-group">
+              <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Password" %>
+          </div>
+          <%= f.submit "Login", class: "btn btn-primary" %>
+      </fieldset>
+  <% end %>  
+  <br>
+  <% flash.each do |type, msg| %>
+      <% if type == "notice" %>
+        <div class="alert alert-success">
+      <% elsif type == "alert" %>
+        <div class="alert alert-danger">
+      <% else %>
+        <div class='alert alert-<%= "#{type}" %>'>
+      <% end %>
+      <a href="#" class="close" data-dismiss="alert">&#215;</a>
+      <%= msg %>
+  <% end %>                        
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+

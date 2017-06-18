@@ -1,0 +1,76 @@
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header"><i class="fa fa-users"></i> Users
+				<div class="btn-group btn-group-actions pull-right">
+					<a id="add-content-link" class="btn btn-default" href="/users/new"><i class="fa fa-plus"></i> Create</a>
+				</div>                    	
+            </h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>          
+    <br>
+    <!-- /.row -->
+    <% if @users.blank? %>
+		<div class="alert alert-info" role="alert">
+		  <strong>No users.</strong> You don't have users yet.
+		</div>
+    <% else %>
+	    <div class="row">    
+	        <div class="col-lg-12">
+			    <div class="input-group">
+	                <div class="input-group-btn search-panel">
+	                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+	                    	<span id="search_concept">Filter by</span> <span class="caret"></span>
+	                    </button>
+	                    <ul class="dropdown-menu" role="menu">
+	                      <li><a href="#contains">Contains</a></li>
+	                      <li><a href="#its_equal">It's equal</a></li>
+	                      <li class="divider"></li>
+	                      <li><a href="#all">Anything</a></li>
+	                    </ul>
+	                </div>
+	                <input type="hidden" name="search_param" value="all" id="search_param">         
+	                <input type="text" class="form-control" name="x" placeholder="Search term...">
+	                <span class="input-group-btn">
+	                    <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+	                </span>
+	            </div>
+	        </div>
+		</div>
+		<br> 
+        <div class="row">
+            <div class="panel panel-default">
+	            <div class="table-responsive">
+					<table class="table table-hover">
+					    <thead>
+					       <tr>
+					         <th>ID</th>
+					         <th>Username</th>
+					         <th>Name</th>
+					         <th>Email</th>
+					         <th>Action</th>
+					       </tr>
+					    </thead>
+					    <tbody>
+					        <% @users.each do |user| %>
+						        <tr>
+						           <td><%= user.id %></td>
+						           <td><%= user.username %></td>
+						           <td><%= user.name %></td>
+						           <td><%= user.email %></td>
+						           <td>
+						           	<%= link_to '<i style="color:#337ab7" class="fa fa-pencil-square-o"></i>'.html_safe, edit_user_path(user)%>
+						           	<%= link_to '<i style="color:#337ab7" class="fa fa-trash"></i>'.html_safe, user, method: :delete, data: { confirm: "Are you sure you want to remove the user: #{user.name}?" } %>
+						           </td>
+						        </tr>
+					      	<%end%>
+					    </tbody>
+					</table>
+				</div>			
+			</div>
+    	</div>
+    <% end %>	
+    <!-- /.row -->
+</div>
+<!-- /#page-wrapper -->

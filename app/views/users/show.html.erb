@@ -1,0 +1,23 @@
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">User <%= @user.name %> profile</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+
+				  <%= @user.email %>
+
+                  <% if current_user == @user %>
+                             <ul>
+                                         <li><%= link_to "Edit", edit_user_path(current_user) %></li>
+                                         <li><%= link_to "Delete", @user, method: :delete%></li>
+                             </ul>
+                  <%end%>                  
+
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->

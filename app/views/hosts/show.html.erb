@@ -1,0 +1,32 @@
+         <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header"><i class="fa fa-server"></i> Host: <%= @host.name %></h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <div class="row">
+
+				<p id="notice"><%= notice %></p>
+
+				<p>
+				  <strong>Address:</strong>
+				  <%= @host.address %>
+				</p>
+
+				<p>
+				  <strong>Username:</strong>
+				  <%= @host.username %>
+				</p>
+
+				<p>
+				  <strong>Password:</strong>
+				  <%= @host.password %>
+				</p>
+
+				<%= link_to 'Edit', edit_host_path(@host) %> |
+				<%= link_to 'Back', hosts_path %>
+            </div>
+            <!-- /.row -->            
+        </div>
+        <!-- /#page-wrapper -->
